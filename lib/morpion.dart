@@ -8,6 +8,12 @@ class Player {
 class Board {
   List<String> cells = List.filled(9, ' ');
 
+  // Affiche le plateau actuel.
+  // Le plateau est affiché en forme de grille de 3x3 avec des séparateurs
+  // entre les cases. Les cases sont affichées sous forme de symboles
+  // (par exemple, "X" ou "O") ou bien d'un espace vide (" ") si
+  // la case est vide.
+  //
   void display() {
     for (int i = 0; i < 9; i += 3) {
       print('${cells[i]} | ${cells[i+1]} | ${cells[i+2]}');
@@ -15,6 +21,11 @@ class Board {
     }
   }
 
+  // Place un symbole sur une case du plateau. 
+  // L'indice doit être compris entre 0 et 8.
+  // Si la case est déjà occupée, la méthode renvoie false.
+  // Si la case est vide, le symbole est placé sur la case et la méthode renvoie true.
+  
   bool place(int index, String symbol) {
     if (index < 0 || index > 8) return false;
     if (cells[index] != ' ') return false;
@@ -22,6 +33,12 @@ class Board {
     return true;
   }
 
+
+  // Vérifie si le plateau contient une combinaison gagnante.
+  // Les combinaisons gagnantes sont les lignes, les colonnes et les diagonales.
+  // Si une combinaison gagnante est trouvée, le symbole de la combinaison est renvoyé.
+  // Si aucune combinaison gagnante n'est trouvée, `null` est renvoyé.
+  
   String? winner() {
     List<List<int>> combos = [
       [0,1,2],[3,4,5],[6,7,8], // lignes
@@ -47,6 +64,32 @@ class Game {
   Player other = Player("O");
   bool inProgress = true;
 
+
+  // Joue un coup sur le plateau.
+  // Si le plateau n'est plus en cours, cette méthode ne fait rien.
+  // Si le coup est valide, cette méthode met à jour le plateau en placant le
+  // symbole du joueur courant sur la case indiquée.
+  // Si le coup est gagnant, cette méthode affiche un message de victoire et
+  // met fin au jeu.
+  // Si le plateau est plein sans que le coup soit gagnant, cette méthode
+  // affiche un message d'égalité et met fin au jeu.
+  // Si le coup est invalide, cette méthode affiche un message d'erreur.
+  
+  
+  /// Joue un coup sur le plateau.
+  ///
+  /// Si le plateau n'est plus en cours, cette méthode ne fait rien.
+  ///
+  /// Si le coup est valide, cette méthode met à jour le plateau en placant le
+  /// symbole du joueur courant sur la case indiquée.
+  ///
+  /// Si le coup est gagnant, cette méthode affiche un message de victoire et
+  /// met fin au jeu.
+  ///
+  /// Si le plateau est plein sans que le coup soit gagnant, cette méthode
+  // affiche un message d'égalité et met fin au jeu.
+  ///
+  /// Si le coup est invalide, cette méthode affiche un message d'erreur.
   void playTurn(int index) {
     if (!inProgress) return;
 
@@ -65,6 +108,8 @@ class Game {
       print("Coup invalide !");
     }
   }
+
+  // Échange les joueurs courant et suivant.
 
   void _switchPlayer() {
     Player temp = current;
