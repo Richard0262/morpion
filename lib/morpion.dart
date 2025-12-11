@@ -76,20 +76,7 @@ class Game {
   // Si le coup est invalide, cette méthode affiche un message d'erreur.
   
   
-  /// Joue un coup sur le plateau.
-  ///
-  /// Si le plateau n'est plus en cours, cette méthode ne fait rien.
-  ///
-  /// Si le coup est valide, cette méthode met à jour le plateau en placant le
-  /// symbole du joueur courant sur la case indiquée.
-  ///
-  /// Si le coup est gagnant, cette méthode affiche un message de victoire et
-  /// met fin au jeu.
-  ///
-  /// Si le plateau est plein sans que le coup soit gagnant, cette méthode
-  // affiche un message d'égalité et met fin au jeu.
-  ///
-  /// Si le coup est invalide, cette méthode affiche un message d'erreur.
+  
   void playTurn(int index) {
     if (!inProgress) return;
 

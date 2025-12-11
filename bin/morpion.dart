@@ -2,10 +2,15 @@
 import 'dart:io';
 import 'package:morpion/morpion.dart';
 
+/// Lance une partie de Morpion.
+///
+/// La partie se termine lorsque le joueur X a gagné, lorsque le plateau est plein
+/// ou lorsque le joueur décide de quitter en entrant 'q'.
 void main() {
   final game = Game();
   print("=== Bienvenue dans le jeu du Morpion ===");
   print("X commence toujours. Les cases sont numérotées de 0 à 8.\n");
+  game.board.display();
 
   while (game.inProgress) {
     // Affichage du plateau
@@ -35,5 +40,5 @@ void main() {
   // Affichage final
   print("\nPlateau final:");
   game.board.display();
-  print("\nStatut: ${game.inProgress ? "En cours" : "Terminé"}");
+  print("\nStatut: ${game.inProgress ? "En cours" : " Partie Terminée"}");
 }
